@@ -7,6 +7,7 @@ import { toneClasses } from '@renderer/shared/lib/tones'
 import { cn } from '@renderer/shared/lib/cn'
 import { ThemeSwitch } from '../screens/SettingsScreen'
 import { useRoute } from '../store/route'
+import { PlatformPanel } from './PlatformPanel'
 
 /* Hidden developer page: #/dev/styleguide (Ctrl/Cmd+Shift+Y in dev). Not translated on purpose. */
 
@@ -68,11 +69,15 @@ export function Styleguide() {
           </Button>
           <h1 className="mt-2 font-display text-4xl font-semibold tracking-[-0.02em] text-fg">Styleguide</h1>
           <p id="styleguide-theme" className="mt-1 text-muted">
-            Tokens, type, buttons, tones and the mascot, straight from the site.
+            Platform readings, tokens, type, buttons, tones and the mascot.
           </p>
         </div>
         <ThemeSwitch labelledBy="styleguide-theme" />
       </div>
+
+      <Section title="Platform">
+        <PlatformPanel />
+      </Section>
 
       <Section title="Colors">
         <div className="grid grid-cols-[repeat(auto-fill,minmax(8.5rem,1fr))] gap-3">

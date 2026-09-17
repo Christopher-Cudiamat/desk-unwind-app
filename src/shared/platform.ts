@@ -26,3 +26,24 @@ export function titleBarKindFor(platform: AppPlatform): TitleBarKind {
 
 /** Height of the custom title bar, shared by the main process overlay and the renderer. */
 export const TITLE_BAR_HEIGHT = 40
+
+/** What the current OS adapter can actually detect, so the UI can hide or explain the rest. */
+export interface PlatformCapabilities {
+  fullscreenDetection: boolean
+  callDetection: boolean
+  protectedApps: boolean
+}
+
+/** A platform-neutral app identifier for the protected apps list, e.g. `{ platform: 'win32', id: 'Teams.exe' }`. */
+export interface AppId {
+  platform: AppPlatform
+  id: string
+}
+
+/** Presence changes break timing reacts to. They are never stored. */
+export type PresenceEvent = 'lock' | 'unlock' | 'suspend' | 'resume'
+
+/** `unknown` means the OS can't tell us (yet); timing treats it like `none`. */
+export type FocusState = 'none' | 'fullscreen' | 'presenting' | 'do-not-disturb' | 'unknown'
+
+export type CallState = 'in-call' | 'none' | 'unknown'

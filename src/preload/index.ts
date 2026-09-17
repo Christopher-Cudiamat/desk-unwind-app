@@ -1,7 +1,7 @@
 import { contextBridge, ipcRenderer, type IpcRendererEvent } from 'electron'
 import { defaultLocale, isLocale, type Locale } from '@shared/i18n/locales'
-import { ARG_DARK, ARG_LANGUAGE, IpcChannel, type DeskUnwindApi } from '@shared/ipc'
-import { titleBarKindFor, toAppPlatform } from '@shared/platform'
+import { ARG_DARK, ARG_LANGUAGE, IpcChannel, type DeskUnwindApi, type DevPlatformStatus } from '@shared/ipc'
+import { titleBarKindFor, toAppPlatform, type PlatformCapabilities } from '@shared/platform'
 import type { ThemePreference, ThemeState } from '@shared/theme'
 
 const platform = toAppPlatform(process.platform)
@@ -30,6 +30,10 @@ const api: DeskUnwindApi = {
       ipcRenderer.on(IpcChannel.languageChanged, handler)
       return () => ipcRenderer.removeListener(IpcChannel.languageChanged, handler)
     },
+  },
+  capabilities: () => ipcRenderer.invoke(IpcChannel.platformCapabilities) as Promise<PlatformCapabilities>,
+  dev: {
+    platformStatus: () => ipcRenderer.invoke(IpcChannel.devPlatformStatus) as Promise<DevPlatformStatus>,
   },
 }
 

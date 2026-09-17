@@ -1,5 +1,6 @@
 import { app } from 'electron'
 import { setupLanguage } from './language'
+import { setupPlatform } from './platformSetup'
 import { setupTheme } from './theme'
 import { showMainWindow } from './windows/mainWindow'
 
@@ -15,9 +16,10 @@ if (!app.requestSingleInstanceLock()) {
   // Windows uses the app user model ID for notifications and taskbar grouping.
   app.setAppUserModelId(APP_ID)
 
-  void app.whenReady().then(() => {
+  void app.whenReady().then(async () => {
     setupTheme()
     setupLanguage()
+    await setupPlatform()
     showMainWindow()
 
     app.on('activate', () => {
