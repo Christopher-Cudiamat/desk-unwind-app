@@ -1,0 +1,161 @@
+@import 'tailwindcss';
+@import './fonts.css';
+@import './tokens.css';
+
+/* Base, utilities and motion below are ported from the site's globals.css (site-only parts dropped). */
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+    overflow: hidden;
+    background-color: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    /* Desktop apps don't select UI text on drag; inputs and `.selectable` opt back in. */
+    user-select: none;
+    cursor: default;
+  }
+
+  input,
+  textarea,
+  .selectable {
+    user-select: text;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border: 3px solid transparent;
+    border-radius: 999px;
+    background: var(--line-strong) padding-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--subtle);
+  }
+
+  ::selection {
+    background: rgb(53 214 197 / 0.3);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--brand-deep);
+    outline-offset: 3px;
+  }
+
+  .dark :focus-visible {
+    outline-color: var(--brand);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  .bg-brand-gradient {
+    background-image: linear-gradient(135deg, #35d6c5 0%, #3fc7de 50%, #4cb8f5 100%);
+  }
+
+  /* Display headings: Fraunces with its soft, friendly axis turned up */
+  .font-display {
+    font-variation-settings:
+      'SOFT' 100,
+      'WONK' 0;
+  }
+
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Custom title bar: drag the window from here; interactive children opt out. */
+  .app-drag {
+    -webkit-app-region: drag;
+  }
+
+  .app-no-drag {
+    -webkit-app-region: no-drag;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .panel-enter {
+    animation: panel-enter 450ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @keyframes panel-enter {
+    from {
+      opacity: 0;
+      transform: translateY(8px) scale(0.985);
+    }
+  }
+
+  .breathe {
+    animation: breathe var(--dur, 8s) ease-in-out var(--delay, 0s) infinite;
+  }
+
+  @keyframes breathe {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.07);
+    }
+  }
+
+  /* Soft pulsing halo, used to nudge attention without a popup */
+  .nudge-glow {
+    animation: nudge-glow 1.8s ease-out infinite;
+  }
+
+  @keyframes nudge-glow {
+    0% {
+      box-shadow:
+        0 0 0 0 rgb(53 214 197 / 0.6),
+        0 0 6px 1px rgb(53 214 197 / 0.5);
+    }
+    70% {
+      box-shadow:
+        0 0 0 12px rgb(53 214 197 / 0),
+        0 0 10px 2px rgb(53 214 197 / 0.25);
+    }
+    100% {
+      box-shadow:
+        0 0 0 0 rgb(53 214 197 / 0),
+        0 0 6px 1px rgb(53 214 197 / 0.5);
+    }
+  }
+
+  .mascot-blink .mascot-eyes {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: mascot-blink 6s ease-in-out infinite;
+  }
+
+  @keyframes mascot-blink {
+    0%,
+    94%,
+    100% {
+      transform: scaleY(1);
+    }
+    96% {
+      transform: scaleY(0.12);
+    }
+  }
+}

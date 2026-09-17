@@ -1,0 +1,9 @@
+/* Bundled locally so the app looks right offline. Fraunces "full" includes the SOFT and WONK axes. */
+@import '@fontsource-variable/plus-jakarta-sans/wght.css';
+@import '@fontsource-variable/fraunces/full.css';
+
+:root {
+  /* The site sets these through next/font; the token block reads them. */
+  --font-jakarta: 'Plus Jakarta Sans Variable';
+  --font-fraunces: 'Fraunces Variable';
+}

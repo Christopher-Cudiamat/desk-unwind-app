@@ -1,0 +1,122 @@
+/*
+ * DeskUnwind design tokens. Copied verbatim from the marketing site (app/globals.css):
+ * the :root, .dark and @theme inline blocks. Keep them in sync with the site; do not edit by hand.
+ */
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------------------------------------------------------------------------
+   DeskUnwind design tokens
+   Light mode is designed on its own terms (warm off-white, white surfaces).
+   Dark mode uses deep slate with slightly lifted surfaces.
+--------------------------------------------------------------------------- */
+:root {
+  --brand: #35d6c5;
+  --brand-deep: #159e9a;
+
+  /* Secondary: light sky blue, a close neighbour of the turquoise */
+  --accent: #4cb8f5;
+  --accent-deep: #1d8ad6;
+
+  /* Warm accent: small friendly touches only (underlines, stickers, highlights) */
+  --warm: #ff9f6e;
+
+  --bg: #fafaf7;
+  --surface: #ffffff;
+  --surface-muted: #f3f4ef;
+  --fg: #111827;
+  --muted: #4b5563;
+  --subtle: #6b7280;
+  --line: rgb(17 24 39 / 0.08);
+  --line-strong: rgb(17 24 39 / 0.14);
+
+  /* Turquoise tuned for readable text on light backgrounds */
+  --brand-text: #0c7a75;
+  --brand-soft: #e3f8f5;
+  --brand-ring: rgb(21 158 154 / 0.35);
+
+  --shadow-color: 17 24 39;
+  --glow: rgb(53 214 197 / 0.22);
+
+  --accent-text: #1669a8;
+  --accent-soft: #e4f3fd;
+  --glow-accent: rgb(76 184 245 / 0.2);
+
+  --warm-text: #b24f1f;
+  --warm-soft: #fff0e6;
+
+  /* Flat section tints — used instead of glow orbs to give sections their own mood */
+  --tint-mint: #e8f6f1;
+  --tint-sky: #e9f3fb;
+  --tint-warm: #fdf2e9;
+
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #0f172a;
+  --surface: #162033;
+  --surface-muted: #1b263c;
+  --fg: #e8edf3;
+  --muted: #a3aec0;
+  --subtle: #8894a8;
+  --line: rgb(255 255 255 / 0.07);
+  --line-strong: rgb(255 255 255 / 0.13);
+
+  --brand-text: #5ee6d6;
+  --brand-soft: rgb(53 214 197 / 0.1);
+  --brand-ring: rgb(53 214 197 / 0.4);
+
+  --shadow-color: 2 6 23;
+  --glow: rgb(53 214 197 / 0.12);
+
+  --accent-text: #7ccbf8;
+  --accent-soft: rgb(76 184 245 / 0.1);
+  --glow-accent: rgb(76 184 245 / 0.12);
+
+  --warm-text: #ffb792;
+  --warm-soft: rgb(255 159 110 / 0.12);
+
+  --tint-mint: #102a33;
+  --tint-sky: #11233b;
+  --tint-warm: #231f2e;
+
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-brand: var(--brand);
+  --color-brand-deep: var(--brand-deep);
+  --color-brand-text: var(--brand-text);
+  --color-brand-soft: var(--brand-soft);
+  --color-accent: var(--accent);
+  --color-accent-deep: var(--accent-deep);
+  --color-accent-text: var(--accent-text);
+  --color-accent-soft: var(--accent-soft);
+  --color-warm: var(--warm);
+  --color-warm-text: var(--warm-text);
+  --color-warm-soft: var(--warm-soft);
+  --color-tint-mint: var(--tint-mint);
+  --color-tint-sky: var(--tint-sky);
+  --color-tint-warm: var(--tint-warm);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: #0f172a;
+
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  /* Soft, slightly quirky serif for headlines — gives the brand its own voice */
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+
+  --shadow-soft: 0 1px 2px rgb(var(--shadow-color) / 0.04),
+    0 8px 24px -12px rgb(var(--shadow-color) / 0.1);
+  --shadow-lifted: 0 1px 2px rgb(var(--shadow-color) / 0.05),
+    0 24px 60px -24px rgb(var(--shadow-color) / 0.22);
+  --shadow-window: 0 2px 4px rgb(var(--shadow-color) / 0.04),
+    0 40px 80px -32px rgb(var(--shadow-color) / 0.3);
+}
